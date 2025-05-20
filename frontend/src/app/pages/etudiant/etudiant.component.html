@@ -1,0 +1,106 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main">
+        <app-header></app-header>
+        <main class="content px-3 py-2">
+            <div class="container-fluid">
+                <div class="card flex-fill border-0">
+                    <div class="p-4 mt-5">
+                        <div class="container">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="fs-1">Liste des étudiants</h4>
+                                <!-- Button to trigger modal -->
+                                <button class="btn button" routerLink="/add-etudiant">
+                                    Ajouter Etudiant
+                                </button>
+                            </div>
+
+                            <!-- Import Excel -->
+                            <div class="container2">
+                                <h2>Importer des étudiants via Excel</h2>
+                                <form (submit)="onSubmit($event)">
+                                    <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls">
+                                    <button type="submit" [disabled]="!selectedFile" class="import-button">Importer</button>
+                                </form>
+                                <div *ngIf="message" class="message">
+                                    {{ message }}
+                                </div>
+                            </div>
+
+                            <!-- Liste des étudiants -->
+                            <div class="student-list">
+                                <mat-form-field class="w-100">
+                                    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+                                </mat-form-field>
+
+                                <table mat-table [dataSource]="dataSource" matSort>
+
+                                    <!-- Email -->
+                                    <ng-container matColumnDef="email">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                                        <td mat-cell *matCellDef="let etudiant">{{ etudiant.email }}</td>
+                                    </ng-container>
+
+                                    <!-- Nom -->
+                                    <ng-container matColumnDef="nom">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+                                        <td mat-cell *matCellDef="let etudiant">{{ etudiant.nom }}</td>
+                                    </ng-container>
+
+                                    <!-- Prénom -->
+                                    <ng-container matColumnDef="prenom">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Prénom</th>
+                                        <td mat-cell *matCellDef="let etudiant">{{ etudiant.prenom }}</td>
+                                    </ng-container>
+
+                                    <!-- Niveau -->
+                                    <ng-container matColumnDef="niveau">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Niveau</th>
+                                        <td mat-cell *matCellDef="let etudiant">{{ etudiant.niveau }}</td>
+                                    </ng-container>
+
+                                    <!-- Classe -->
+                                    <ng-container matColumnDef="classe">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Classe</th>
+                                        <td mat-cell *matCellDef="let etudiant">{{ etudiant.classe }}</td>
+                                    </ng-container>
+
+                                    <!-- Carte Étudiant -->
+                                    <ng-container matColumnDef="carteEtudiant">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Carte Étudiant</th>
+                                        <td mat-cell *matCellDef="let etudiant">{{ etudiant.carteEtudiant }}</td>
+                                    </ng-container>
+
+                                    <!-- Actions -->
+                                    <ng-container matColumnDef="actions">
+                                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                                        <td mat-cell *matCellDef="let etudiant">
+                                            <button class="btn btn-warning me-1" (click)="editEtudiant(etudiant)">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-danger" *ngIf="etudiant._id" (click)="deleteEtudiant(etudiant._id)">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Table Rows -->
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+
+                                <!-- Message si aucun étudiant -->
+                                <div *ngIf="dataSource.data.length === 0" class="alert  text-center mt-3">
+                                    Aucun étudiant trouvé.
+                                </div>
+
+                                <!-- Paginator -->
+                                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main">
+      <app-header></app-header>
+      <main class="content px-4 py-4">
+        <div class="container-fluid">
+          <div class="card flex-fill border-0">
+            <div class="p-4 mt-5">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fs-1">Liste des Enseignants</h4>
+                <button class="button me-4" data-bs-toggle="modal" data-bs-target="#enseignantModal" (click)="resetForm()">
+                  Ajouter Enseignant
+                </button>
+              </div>
+              <div class="bord">
+                <mat-form-field class="w-100">
+                  <mat-label>Filter</mat-label>
+                  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
+                </mat-form-field>
+                <table mat-table [dataSource]="dataSource" matSort>
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                    <td mat-cell *matCellDef="let row">{{ row._id }}</td>
+                  </ng-container>
+  
+                  <!-- Email Column -->
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                    <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+                  </ng-container>
+  
+                  <!-- Nom Column -->
+                  <ng-container matColumnDef="nom">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+                    <td mat-cell *matCellDef="let row">{{ row.nom }}</td>
+                  </ng-container>
+  
+                  <!-- Prenom Column -->
+                  <ng-container matColumnDef="prenom">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Prénom</th>
+                    <td mat-cell *matCellDef="let row">{{ row.prenom }}</td>
+                  </ng-container>
+  
+                  <!-- Actions Column -->
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+                    <td mat-cell *matCellDef="let row">
+                      <button class="btn btn-warning me-1" data-bs-toggle="modal" data-bs-target="#enseignantModal" (click)="openModal(row._id)">
+                        <i class="bi bi-pencil"></i>
+                      </button>
+                      <button class="btn btn-danger delete-button" (click)="delete(row._id)">
+                        <i class="bi bi-trash3"></i>
+                      </button>
+                    </td>
+                  </ng-container>
+  
+                  <!-- Header and Row Definitions -->
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+                  <!-- Row shown when there is no matching data. -->
+                  
+                </table>
+                <div *ngIf="dataSource.data.length === 0" class="alert  text-center mt-3">
+                  Aucun Enseignant trouvé.
+              </div>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page size"></mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+ <!-- Modal for Add/Update Enseignant -->
+<!-- Modal for Add/Update Enseignant -->
+<div class="modal fade" id="enseignantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="enseignantModalLabel" aria-hidden="true" #enseignantModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          <span *ngIf="!isEdit">Ajouter Enseignant</span>
+          <span *ngIf="isEdit">Modifier Enseignant</span>
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="enseignantForm">
+          <div class="d-flex flex-wrap gap-3">
+            <!-- Nom Field -->
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Nom</mat-label>
+              <input matInput formControlName="nom" required />
+              <mat-error *ngIf="enseignantForm.get('nom')?.hasError('required')">
+                Le nom est requis.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Prenom Field -->
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Prénom</mat-label>
+              <input matInput formControlName="prenom" required />
+              <mat-error *ngIf="enseignantForm.get('prenom')?.hasError('required')">
+                Le prénom est requis.
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Email Field -->
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" required />
+              <mat-error *ngIf="enseignantForm.get('email')?.hasError('required')">
+                L'email est requis.
+              </mat-error>
+              <mat-error *ngIf="enseignantForm.get('email')?.hasError('email')">
+                Veuillez entrer une adresse email valide.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button *ngIf="!isEdit" mat-raised-button color="primary"
+          [disabled]="enseignantForm.invalid" (click)="add()">
+          Ajouter
+        </button>
+        <button *ngIf="isEdit" mat-raised-button color="primary"
+          [disabled]="enseignantForm.invalid" (click)="update()">
+          Modifier
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

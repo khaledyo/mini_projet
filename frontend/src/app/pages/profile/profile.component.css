@@ -1,0 +1,139 @@
+@import url('../style.css');
+
+.dropdown-menu {
+    width: 100%; /* Occupe toute la largeur du conteneur parent */
+    min-width: 500px; /* Largeur minimale */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    padding: 10px 15px;
+}
+
+.dropdown-item i {
+    font-size: 16px;
+}
+
+.btn-light {
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 0px;
+    border-radius: 0px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #e0efff;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+.edit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.fw-semibold {
+    font-weight: 600;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+  
+  .border-bottom {
+    border: none;
+    border-bottom: 2px solid #dee2e6;
+    border-radius: 0;
+  }
+  .border-bottom:focus {
+    box-shadow: none;
+  }
+  .login-title{
+    font-size: 1.5rem;
+  }
+  .loginl,.login-title{
+    color: #ff9900;
+  }
+  
+  .input-group-text {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .btn-primary {
+    background: transparent linear-gradient(134deg, #FF3C00 0%, #f69c00 100%) 0% 0% no-repeat padding-box !important;
+    color: white;
+    border-radius: 0;
+    border: none;
+  }
+

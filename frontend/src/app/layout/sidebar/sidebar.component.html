@@ -1,0 +1,66 @@
+<aside id="sidebar" class="js-sidebar" [ngClass]="{'collapsed': isCollapsed}">
+    <div class="h-100">
+      <div class="sidebar-logo">
+        <img src="../../../assets/logo.png" height="50px" width="50px" alt="">
+        <a href="#">IsetKl</a>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="sidebar-header">
+          Admin Elements
+        </li>
+        <li class="sidebar-item">
+          <a routerLink="/home" routerLinkActive="active text-primary" class="sidebar-link">
+            <i class='bx bx-grid-alt'></i>
+            <span class="betwwen">Dashboard</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" [ngClass]="{'make': isDropdownActive('pages'), 'collapsed': !isDropdownActive('pages')}" data-bs-target="#pages" data-bs-toggle="collapse"
+            aria-expanded="false">
+            <i class='bx bx-group'></i>
+            <span class="betwwen ">Gestion</span>
+          </a>
+          <ul id="pages" class="sidebar-dropdown list-unstyled collapse" [ngClass]="{'show': isDropdownActive('pages')}" data-bs-parent="#sidebar">
+            <li class="sidebar-item">
+              <a routerLink="/classe" routerLinkActive="active text-primary" class="sidebar-link">📚 Classes</a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/enseignant" routerLinkActive="active text-primary" class="sidebar-link">🧑‍💻 Enseignants</a>
+            </li>
+            
+            <li class="sidebar-item">
+              <a routerLink="/etudiants" routerLinkActive="active text-primary" class="sidebar-link">👨‍🏫 Étudiants</a>
+            </li>
+
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" style="color: black !important;" class="sidebar-link" [ngClass]="{'active': isDropdownActive('posts'), 'collapsed': !isDropdownActive('posts')}" data-bs-target="#posts" data-bs-toggle="collapse"
+            aria-expanded="false">
+            <i class='bx bx-book-alt'></i>
+            <span class="betwwen">Stages</span>
+          </a>
+          <ul id="posts" class="sidebar-dropdown list-unstyled collapse" [ngClass]="{'show': isDropdownActive('posts')}" data-bs-parent="#sidebar">
+            <li class="sidebar-item">
+              
+              <a routerLink="/Initiation" routerLinkActive="active text-primary" class="sidebar-link">📘Initiation </a>
+            </li>
+            <li class="sidebar-item">
+              
+              <a routerLink="/perfectionnement" routerLinkActive="active text-primary" class="sidebar-link">🧑‍💻Perfectionement</a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/pfe" routerLinkActive="active text-primary" class="sidebar-link">🎓PFE</a>
+            </li>
+          </ul>
+        </li>
+        <li class="sidebar-item">
+          <a routerLink="/profile" routerLinkActive="active text-primary" class="sidebar-link">
+            <i class='bx bx-cog'></i>
+            <span class="betwwen">Profile</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </aside>

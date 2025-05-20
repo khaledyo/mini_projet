@@ -1,0 +1,46 @@
+/* Center the form on the page */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f5f5f5; /* Light gray background */
+    
+}
+
+/* Style the form container */
+.form-container {
+    background-color: white; /* White background */
+    padding: 2rem;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 500px; /* Limit the width */
+}
+
+/* Style the form fields */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem; /* Space between fields */
+}
+
+/* Nom and Prénom in the same line */
+.row {
+    display: flex;
+    gap: 0rem; /* Space between Nom and Prénom fields */
+}
+
+.row mat-form-field {
+    flex: 1; /* Equal width for both fields */
+}
+
+/* Style the buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+button[mat-raised-button] {
+    width: 48%; /* Make buttons take up equal space */
+}

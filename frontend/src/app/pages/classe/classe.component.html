@@ -1,0 +1,94 @@
+
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main">
+      <app-header></app-header>
+      <main class="content px-4 py-4">
+        <div class="container-fluid">
+          <div class="card flex-fill border-0">
+            <div class="p-4 mt-5">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fs-1">Liste de Niveau</h4>
+                <button class="button" (click)="openModal()">Ajouter  Niveau</button>
+               
+              </div>
+                
+              <table mat-table [dataSource]="dataSource" matSort >
+                  <ng-container matColumnDef="annee">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Année</th>
+                    <td mat-cell *matCellDef="let element">{{ element.annee }}</td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="classes">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Classes</th>
+                    <td mat-cell *matCellDef="let element">
+                      <ul class="list-group">
+                        <li *ngFor="let classe of element.classes" class="list-group-item d-flex justify-content-between align-items-center">
+                          {{ classe }}
+                          <button class="btn supp btn-sm" (click)="deleteClasse(element.annee, classe)"><i class="bi bi-trash3"></i></button>
+                        </li>
+                      </ul>
+                    </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element">
+                      <div class="btn-group">
+                        
+                        <button class="btn btn-danger btn-sm" (click)="deleteAnnee(element.annee)">Supprimer</button>
+                      </div>
+                    </td>
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                
+                <!-- Modal for adding or editing a class -->
+                <div class="modal fade" #classeModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ isEdit ? 'Modifier la classe' : 'Ajouter une classe' }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form [formGroup]="classeForm" (ngSubmit)="addClasse()">
+                          <div class="mb-3">
+                            <label for="annee" class="form-label">Année</label>
+                            <select id="annee" class="form-control" formControlName="annee" [disabled]="isEdit">
+                              <option value="1ere_annee">1ère Année</option>
+                              <option value="2eme_annee">2ème Année</option>
+                              <option value="3eme_annee">3ème Année</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="classe" class="form-label">Classe</label>
+                            <input type="text" id="classe" class="form-control" formControlName="classe" required />
+                          </div>
+                          <button type="submit" class="btn btn-primary" [disabled]="classeForm.invalid">{{  'Ajouter' }}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+

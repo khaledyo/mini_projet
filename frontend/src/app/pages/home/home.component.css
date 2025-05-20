@@ -1,0 +1,58 @@
+@import url('../style.css');
+
+.h3 {
+    font-family: monospace;
+    font-size: 1.275rem;
+    width: 20ch;
+    color: var(--bs-emphasis-color);
+    text-wrap: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(20) forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 20ch;
+  }
+}
+
+
+
+
+.illustration {
+    background-color: var(--bs-primary-bg-subtle);
+    color: var(--bs-emphasis-color);
+}
+
+.illustration-img {
+    max-width: 150px;
+    width: 100%;
+}
+
+.custom-height {
+    height: 200px; 
+    border-radius: 10px;
+    width: 100%; 
+    object-fit: cover; 
+  }
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.bg-warning{
+    background-color:  rgb(233, 233, 148);;
+}
+
+

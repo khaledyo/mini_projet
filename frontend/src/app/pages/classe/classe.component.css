@@ -1,0 +1,18 @@
+@import url('../style.css');
+
+.list-group-item:last-child {
+  border-bottom: none !important; 
+}
+.list-group-item {
+    border: none;
+    border-radius: 0px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(222, 218, 218);
+    width: 80%;
+  }
+  .supp{
+    color: white; 
+    border-radius: 5px; 
+    background: transparent linear-gradient(134deg, #FF3C00 0%, #FF8000 100%) 0% 0% no-repeat padding-box !important;
+  }
+

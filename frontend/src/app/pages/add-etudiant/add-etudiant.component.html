@@ -1,0 +1,37 @@
+<div class="form-wrapper">
+    <div class="form-container">
+        <h2>{{ isEditMode ? 'Modifier un Étudiant' : 'Ajouter un Étudiant' }}</h2>
+        <form (ngSubmit)="isEditMode ? updateEtudiant() : addEtudiant()">
+            <mat-form-field class="w-100">
+                <input matInput type="email" placeholder="Email" [(ngModel)]="newEtudiant.email" name="email" required>
+            </mat-form-field>
+
+            <div class="row">
+                <mat-form-field class="w-50">
+                    <input matInput type="text" placeholder="Nom" [(ngModel)]="newEtudiant.nom" name="nom" required>
+                </mat-form-field>
+                <mat-form-field class="w-50">
+                    <input matInput type="text" placeholder="Prénom" [(ngModel)]="newEtudiant.prenom" name="prenom" required>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="w-100">
+                <mat-select placeholder="Niveau" [(ngModel)]="newEtudiant.niveau" name="niveau" required (selectionChange)="loadClasses()">
+                    <mat-option *ngFor="let niveau of niveaux" [value]="niveau">{{ niveau }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-select placeholder="Classe" [(ngModel)]="newEtudiant.classe" name="classe" required>
+                    <mat-option *ngFor="let classe of classes" [value]="classe">{{ classe }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="button-container">
+                <button mat-raised-button type="button" (click)="goBack()">Retour</button>
+                <button mat-raised-button type="submit" color="primary">
+                    {{ isEditMode ? 'Modifier Étudiant' : 'Ajouter Étudiant' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

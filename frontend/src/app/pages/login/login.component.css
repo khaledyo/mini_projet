@@ -1,0 +1,126 @@
+
+body {
+    font-family: 'Sans-serif', Arial, Helvetica, sans-serif;
+  background-color: rgba(246, 243, 243, 0.6);
+  background-image: 
+  url('../../../assets/download.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+   
+  }
+  .vh-100 {
+    
+    max-height: 91vh;
+    
+}
+
+  .max-w-1000 {
+    max-width: 850px;
+  }
+  
+  .shadow-lg {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+  
+  .border-bottom {
+    border: none;
+    border-bottom: 2px solid #dee2e6;
+    border-radius: 0;
+  }
+  .border-bottom:focus {
+    box-shadow: none;
+  }
+  .login-title{
+    font-size: 1.5rem;
+  }
+  .loginl,.login-title{
+    color: #ff6d00;
+  }
+  
+  .input-group-text {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .btn-primary {
+    background: transparent linear-gradient(134deg, #FF3C00 0%, #FF8000 100%) 0% 0% no-repeat padding-box !important;
+    color: white;
+    border-radius: 0;
+    border: none;
+  }
+  
+  
+  .text-sm {
+    font-size: 0.9rem;
+  }
+  
+  .cursor-pointer,a {
+    cursor: pointer;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .w-25 {
+    width: 25%;
+  }
+ 
+  .w-75 {
+    width: 75%;
+  }
+  .footer {
+    background-color: #eceff1; /* Gris clair */
+    padding: 5px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+   
+}
+
+.footer-container {
+    width: 100%;
+    height: 40px;
+    max-width: 1200px;
+    display: flex;
+    
+    
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.flag {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-text {
+    font-size: 10px;
+    color: #333;
+   
+}
+
+.footer-right {
+    font-size: 11px;
+    color: #333;
+    padding-right: 30px;
+    margin-left: auto;
+    text-align: right;
+    white-space: nowrap; /* Empêche le passage à la ligne */
+    
+}
+
+  

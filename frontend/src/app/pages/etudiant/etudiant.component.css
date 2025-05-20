@@ -1,0 +1,102 @@
+@import url('../style.css');
+
+/* Ensure Angular Material dropdown appears above Bootstrap modal */
+.cdk-overlay-container {
+    z-index: 1051 !important; /* Bootstrap modals have a z-index of 1050 */
+  }
+/* Styles pour la section Importer des étudiants */
+.container2 {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.import-button:disabled {
+    background: #cccccc !important; 
+    color: #666666 !important;
+    cursor: not-allowed;
+    border: 1px solid #999999;
+    opacity: 0.7;
+  }
+  
+h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+}
+
+button[type="submit"] {
+    background: linear-gradient(134deg, #FF3C00 0%, #FF8000 100%);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+.message {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+}
+
+/* Table des étudiants */
+.student-list {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #f1f1f1;
+}
+
+
+.btn-warning {
+    background: #ffc107;
+    border: none;
+}
+
+.btn-danger {
+    background: #dc3545;
+    border: none;
+}
+
+.btn-warning:hover, .btn-danger:hover {
+    opacity: 0.9;
+}

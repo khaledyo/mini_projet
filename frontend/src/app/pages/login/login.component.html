@@ -1,0 +1,89 @@
+<body>
+  <div class="font-sans text-dark d-flex align-items-center justify-content-center vh-100 px-4">
+    <div class="shadow-lg rounded p-4 max-w-1000 w-100 bg-white">
+      <div class="row align-items-center">
+        <!-- Section Image -->
+        <div class="col-md-6 d-flex justify-content-center">
+          <img src="../../../assets/login.webp" class="img-fluid w-75" alt="Login Illustration" />
+        </div>
+        <!-- Section Formulaire -->
+        <div class="col-md-6">
+          <form class="w-100" [formGroup]="loginForm" (ngSubmit)="login()">
+            <!-- Titre -->
+            <div class="mb-4">
+              <h3 class="login-title fw-bold text-center">Se connecter</h3>
+            </div>
+            <div *ngIf="errorMsg" class="alert alert-danger mt-3 text-center" role="alert">
+              {{ errorMsg }}
+            </div>
+            <!-- Champ Email -->
+            <div class="mb-3">
+              <div class="input-group">
+                <input
+                  formControlName="email"
+                  type="text"
+                  class="form-control border-bottom"
+                  placeholder="Entrez votre email"
+                  [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                />
+                <span class="input-group-text bg-transparent border-bottom">
+                  <i class="bi bi-person-fill text-muted"></i>
+                </span>
+              </div>
+              <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger mt-1">
+                <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis.</small>
+                <small *ngIf="loginForm.get('email')?.errors?.['email']">Veuillez entrer un email valide.</small>
+              </div>
+            </div>
+            <!-- Champ Mot de passe -->
+            <div class="mb-3">
+              <div class="input-group">
+                <input
+                  formControlName="password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="form-control border-bottom"
+                  placeholder="Entrez votre mot de passe"
+                  [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                />
+                <span class="input-group-text bg-transparent border-bottom cursor-pointer" (click)="togglePasswordVisibility()">
+                  <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                </span>
+              </div>
+              <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger mt-1">
+                <small *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</small>
+                <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères.</small>
+              </div>
+            </div>
+            <!-- Bouton de soumission -->
+            <div class="d-flex justify-content-center mt-3">
+              <button type="submit" class="btn btn-primary w-50 text-center"  [disabled]="isLoading"  >
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+                <span *ngIf="!isLoading"> Se connecter</span>
+              </button>
+            </div>
+            <!-- Message d'erreur général -->
+           
+            <!-- Lien mot de passe oublié -->
+            <p class="text-center text-sm mt-3">
+              <a routerLink="/forget-password" class="loginl fw-bold">Mot de passe oublié ?</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="../../../assets/flag.png" alt="Drapeau Tunisien" class="flag">
+        <div class="footer-text">
+          <small>République Tunisienne <br> Ministère de l’Enseignement Supérieur et de la Recherche Scientifique</small>
+        </div>
+      </div>
+    </div>
+    <div class="footer-right">
+      © Copyright 2025 ISET KELIBIA. Tous droits réservés.
+    </div>
+  </footer>
+</body>
