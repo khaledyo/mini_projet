@@ -5,7 +5,7 @@ const Etudiant = require("../model/etudiant.js");
 const Classe = require("../model/classe.js");
 const router = express.Router();
 
-// Configuration de Multer pour gérer l'upload de fichiers
+// Configuration de Multer pour gérer l'upload de fichiers.
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 function capitalizePrenom(str) {
