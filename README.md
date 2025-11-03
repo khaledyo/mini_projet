@@ -99,5 +99,6 @@ L’objectif principal du projet est d’automatiser la **gestion des stages** e
 
 ### 1️⃣ Cloner le projet
 ```bash
-git clone https://github.com/ton-compte/gestion-educative-admin.git
-cd gestion-educative-admin
+git clone https://github.com/khaledyo/mini_projet.git
+cd mini_projet
+
