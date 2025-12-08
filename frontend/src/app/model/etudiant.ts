@@ -1,5 +1,5 @@
 export interface Etudiant {
-    _id: string; // Ensure this is included
+    _id: string;
     email: string;
     nom: string;
     prenom: string;
